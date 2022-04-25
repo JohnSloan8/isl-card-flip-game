@@ -21,11 +21,13 @@ const CardGame = props => {
   }, [])
 
   useEffect(() => {
+    console.log('activePairs:', activePairs)
     if (initialMount.current) {
       initialMount.current = false;
     } else {
       if (activePairs.length === 0) {
         let timeTaken = (performance.now() - startTime) / 1000
+        console.log('timeTaken', timeTaken)
         alert('you finished in: ' + timeTaken.toString() + " seconds")
         resetGame()
       }
@@ -33,19 +35,21 @@ const CardGame = props => {
   }, [activePairs])
 
   const resetGame = () => {
-    let letterArray = getLetterGroup("vowels", 9)
+    console.log('setting Letter Dict')
+    let letterArray = getLetterGroup("vowels")
     let tempLetterDict = {}
     let tempActivePairs = []
-    setStartTime(performance.now())
     letterArray.forEach(l => {
       tempActivePairs.push(l)
       tempLetterDict[l] = {
         active : false,
-        show: true,
+        class: "no-judgement",
+        onclick: (e) => selectCard(props.letter)
       }
       tempLetterDict[l + '_l'] = {
         active : false,
-        show: true,
+        class: "no-judgement",
+        onclick: (e) => selectCard(props.letter)
       }
     })
     setLetterDict(tempLetterDict);

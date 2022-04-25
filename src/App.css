@@ -4,18 +4,19 @@
   width: 100%;
 }
 
-.no-judgement {
-  border: 4px solid white;
-}
+/*.no-judgement {*/
+  /*padding: 4px solid white;*/
+/*}*/
 
-.incorrect {
-  border: 4px solid red;
-}
+/*.incorrect {*/
+  /*padding: 4px solid red;*/
+  /*background-color: red;*/
+/*}*/
 
-.correct {
-  border: 4px solid lightgreen;
-}
+/*.correct {*/
+  /*padding: 4px solid lightgreen;*/
+/*}*/
 
-.removed {
-  visibility: hidden;
-}
+/*.removed {*/
+  /*visibility: hidden;*/
+/*}*/
