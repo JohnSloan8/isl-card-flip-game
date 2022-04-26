@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { CardGameContext } from "./CardGame";
+import { CardGameContext } from "./CardGames";
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

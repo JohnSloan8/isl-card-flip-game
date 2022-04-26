@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import CardElement from "./CardElement";
-import { CardGameContext } from "./CardGame";
+import { CardGameContext } from "./CardGames";
 import { useContext } from "react";
 
 const GameGrid = () => {

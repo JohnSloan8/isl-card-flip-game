@@ -1,9 +1,8 @@
 import './App.css';
-import ButtonAppBar from './Components/Navbar';
-import CardGame from './Components/CardGame';
+import Navbar from './Components/Navbar';
+import CardGames from './Components/CardGames';
 import Dashboard from './Components/Dashboard';
 import Container from '@mui/material/Container';
-import { Link } from "react-router-dom";
 import {
   Routes,
   Route,
@@ -12,20 +11,12 @@ import {
 const App = () => {
   return (
     <div className="App">
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/dashboard">Dashboard</Link> |{" "}
-        <Link to="/cardgame">Game</Link>
-      </nav>
-      <Container maxWidth="md" sx={{height: '100%'}}>
-        <Container sx={{marginTop: '5%', border: '1px dashed black'}}>
+      <Navbar sx={{zIndex: 100}} />
+      <Container maxWidth="md" sx={{height: '100%', position: "absolute", top: 0, zIndex:1}}>
+        <Container sx={{marginTop: '25%'}}>
           <Routes>
-            <Route path="cardgame" element={<CardGame />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="cardgames/:game" element={<CardGames />} />
+            <Route path="/" element={<Dashboard />} />
           </Routes>
         </Container>
       </Container>

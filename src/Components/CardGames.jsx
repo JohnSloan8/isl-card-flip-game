@@ -3,10 +3,11 @@ import GameGrid from './GameGrid';
 import { createContext } from "react";
 import getLetterGroup from "../data/letter-groups.jsx"
 import { shuffleArray } from "../utils"
+import { useParams, useNavigate } from "react-router-dom"
 
 export const CardGameContext = createContext();
 
-const CardGame = props => {
+const CardGames = props => {
   const [selectedCard, setSelectedCard] = useState(null)
   const [twoSelected, setTwoSelected] = useState(false)
   const [letterDict, setLetterDict] = useState({})
@@ -15,25 +16,25 @@ const CardGame = props => {
   const [startTime, setStartTime] = useState(performance.now())
 
   const initialMount = useRef(true)
-
-  useEffect(() => {
-    resetGame();
-  }, [])
+  const navigate = useNavigate();
+  let params = useParams();
 
   useEffect(() => {
     if (initialMount.current) {
       initialMount.current = false;
+      resetGame();
     } else {
       if (activePairs.length === 0) {
         let timeTaken = (performance.now() - startTime) / 1000
         alert('you finished in: ' + timeTaken.toString() + " seconds")
         resetGame()
+        navigate('/')
       }
     }
   }, [activePairs])
 
   const resetGame = () => {
-    let letterArray = getLetterGroup("vowels", 9)
+    let letterArray = getLetterGroup(params.game, 7)
     let tempLetterDict = {}
     let tempActivePairs = []
     setStartTime(performance.now())
@@ -72,4 +73,4 @@ const CardGame = props => {
   )
 }
 
-export default CardGame
+export default CardGames

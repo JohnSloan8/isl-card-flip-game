@@ -5,25 +5,30 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from "react-router-dom"
 
-export default function ButtonAppBar() {
+export default function Navbar() {
+
+  const navigate = useNavigate();
+  const redirectHome = () => {
+    navigate('/')
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="absolute">
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
-            aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={redirectHome}
           >
-            <MenuIcon />
+            <HomeIcon/>
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
