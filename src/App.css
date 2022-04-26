@@ -4,9 +4,13 @@
   width: 100%;
 }
 
-/*.no-judgement {*/
-  /*padding: 4px solid white;*/
-/*}*/
+.flat {
+  scale: 1.0;
+}
+
+.raised {
+  scale: 1.1;
+}
 
 /*.incorrect {*/
   /*padding: 4px solid red;*/

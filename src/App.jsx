@@ -12,10 +12,10 @@ const App = () => {
   return (
     <div className="App">
       <Navbar sx={{zIndex: 100}} />
-      <Container maxWidth="md" sx={{height: '100%', position: "absolute", top: 0, zIndex:1}}>
-        <Container sx={{marginTop: '25%'}}>
+      <Container maxWidth="md" sx={{top: 0, zIndex:1}}>
+        <Container sx={{marginTop: '20%'}}>
           <Routes>
-            <Route path="cardgames/:game" element={<CardGames />} />
+            <Route path="cardgames/:imageType/:game" element={<CardGames />} />
             <Route path="/" element={<Dashboard />} />
           </Routes>
         </Container>

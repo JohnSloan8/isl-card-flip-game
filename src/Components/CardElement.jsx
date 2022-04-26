@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { CardGameContext } from "./CardGames";
+import { useParams } from "react-router-dom"
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,6 +11,8 @@ import Fade from '@mui/material/Fade';
 
 const CardElement = props => {
 
+  let params = useParams()
+
   const {
     letterDict,
     setLetterDict,
@@ -18,10 +21,11 @@ const CardElement = props => {
     twoSelected,
     setTwoSelected,
     activePairs,
-    setActivePairs
+    setActivePairs,
+    imageURLPrefix
   } = useContext(CardGameContext)
 
-  let imageURL = "/images/drawn-alphabet-images/isl-drawn-" + props.letter + ".png"
+  let imageURL = imageURLPrefix + props.letter + ".png"
 
   //const [selected, setSelected] = useState(false)
   const [showCard, setShowCard] = useState(true)
@@ -49,18 +53,22 @@ const CardElement = props => {
   const afterGuess = r => {
     setSelectedCard(null)
     setTwoSelected(false)
-    if ( r ) {
-      setLetterDict({...letterDict, [props.letter]: { active: false, show: false}, [selectedCard]: { active: false, show: false}})
-      let newActivePairs = activePairs.filter( item => item !== props.letter && item !== selectedCard)
-      setActivePairs(newActivePairs)
-    } else {
-      setLetterDict({...letterDict, [props.letter]: { active: false, show: true }, [selectedCard]: { active: false, show: true }})
-    }
+    setLetterDict({...letterDict, [props.letter]: { active: true, show: true}, [selectedCard]: { active: true, show: true}})
+    setTimeout( () => {
+      if ( r ) {
+        setLetterDict({...letterDict, [props.letter]: { active: true, show: false}, [selectedCard]: { active: true, show: false}})
+        let newActivePairs = activePairs.filter( item => item !== props.letter && item !== selectedCard)
+        setActivePairs(newActivePairs)
+      } else {
+        setLetterDict({...letterDict, [props.letter]: { active: false, show: true }, [selectedCard]: { active: false, show: true }})
+      }
+    }, 200)
   }
 
   return (
     <Fade in={letterDict[props.letter].show} timeout={500}>
       <Card 
+        className={letterDict[props.letter]["active"] ? "raised" : "flat" }
         sx={{height: '100%'}}
         elevation={letterDict[props.letter]["active"] ? 24 : 1}
         onClick={letterDict[props.letter].show ? (e) => selectCard(props.letter) : null }

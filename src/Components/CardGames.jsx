@@ -14,10 +14,12 @@ const CardGames = props => {
   const [cardOrder, setCardOrder] = useState([])
   const [activePairs, setActivePairs] = useState([])
   const [startTime, setStartTime] = useState(performance.now())
+  const [imageURLPrefix, setImageURLPrefix] = useState('')
 
   const initialMount = useRef(true)
   const navigate = useNavigate();
   let params = useParams();
+  console.log('params:', params)
 
   useEffect(() => {
     if (initialMount.current) {
@@ -26,15 +28,18 @@ const CardGames = props => {
     } else {
       if (activePairs.length === 0) {
         let timeTaken = (performance.now() - startTime) / 1000
+        setTimeout(() => {
         alert('you finished in: ' + timeTaken.toString() + " seconds")
-        resetGame()
-        navigate('/')
+          resetGame()
+          navigate('/')
+        }, 300)
       }
     }
   }, [activePairs])
 
   const resetGame = () => {
-    let letterArray = getLetterGroup(params.game, 7)
+
+    let letterArray = getLetterGroup(params.game, params.imageType, 7)
     let tempLetterDict = {}
     let tempActivePairs = []
     setStartTime(performance.now())
@@ -49,6 +54,12 @@ const CardGames = props => {
         show: true,
       }
     })
+    if (params.imageType === "drawing") {
+      setImageURLPrefix("/images/drawn-alphabet-images/isl-drawn-")
+    } else {
+      setImageURLPrefix("/images/photo-alphabet-images/isl-photo-")
+    }
+
     setLetterDict(tempLetterDict);
     setActivePairs(tempActivePairs);
     setCardOrder(shuffleArray(Object.keys(tempLetterDict)))
@@ -65,7 +76,8 @@ const CardGames = props => {
           twoSelected,
           setTwoSelected,
           activePairs,
-          setActivePairs
+          setActivePairs,
+          imageURLPrefix
         }}
       >
         <GameGrid />

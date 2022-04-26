@@ -5,34 +5,50 @@ import Box from '@mui/material/Box';
 import { Link } from "react-router-dom";
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import NativeSelect from '@mui/material/NativeSelect';
+import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from "react";
 
 export default function Dashboard() {
 
-  const [age, setAge] = useState('');
+  const [imageType, setImageType] = useState('drawing');
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setImageType(event.target.value);
+    if (event.target.value === "photo") {
+      document.getElementById('moving consonants').style.visibility = "hidden"
+    } else {
+      document.getElementById('moving consonants').style.visibility = "visible"
+    }
   };
 
   const gameTypes = ["vowels", "static consonants", "moving consonants", "all"];
 
   return (
     <Container align="center">
+      <FormControl fullWidth sx={{marginTop: "20px"}}>
+        <Select
+          defaultValue='drawing'
+          onChange={handleChange}
+        >
+          <MenuItem value='drawing'>Drawing</MenuItem>
+          <MenuItem value='photo'>Photo</MenuItem>
+        </Select>
+      </FormControl>
       <ButtonGroup
+        sx={{marginTop: "20px"}}
         orientation="vertical"
         aria-label="vertical contained button group"
         variant="text"
       >
         {gameTypes.map((game) =>
-          <Link
-              style={{ display: "block", margin: "1rem 0" }}
-              to={`/cardgames/${game.replace(/\s/g, '_')}`}
-              key={game}
+          <div key={game} id={game}>
+            <Link
+                style={{ display: "block", margin: "1rem 0" }}
+                to={`/cardgames/${imageType}/${game.replace(/\s/g, '_')}`}
             >
-            <Button>{game}</Button>
-          </Link>)}
+              <Button>{game}</Button>
+            </Link>
+          </div>)}
       </ButtonGroup>
     </Container>
   );
