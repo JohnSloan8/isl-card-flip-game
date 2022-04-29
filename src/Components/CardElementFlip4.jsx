@@ -1,16 +1,12 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { CardGameContext } from "./CardGames";
+import { useParams } from "react-router-dom"
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import Fade from '@mui/material/Fade';
+const CardElementFlip4 = props => {
 
-const CardElement = props => {
+  const params = useParams()
 
-  const {
+	const {
     letterDict,
     setLetterDict,
     selectedCard,
@@ -23,11 +19,8 @@ const CardElement = props => {
   } = useContext(CardGameContext)
 
   let imageURL = imageURLPrefix + props.letter + ".png"
-
-  //const [selected, setSelected] = useState(false)
-  const [showCard, setShowCard] = useState(true)
-
-  const selectCard = e => {
+  let backImageURL = "/images/card-back-" + params.imageType + ".png"
+  const flipCard = () => {
     if (selectedCard === null) {
       setLetterDict({...letterDict, [props.letter]: { active: true, show: true }})
       setSelectedCard(props.letter)
@@ -44,7 +37,6 @@ const CardElement = props => {
         afterGuess(result)
       }
     }
-    //selected ? setSelected(false) : setSelected(true)
   }
 
   const afterGuess = r => {
@@ -59,37 +51,38 @@ const CardElement = props => {
       } else {
         setLetterDict({...letterDict, [props.letter]: { active: false, show: true }, [selectedCard]: { active: false, show: true }})
       }
-    }, 200)
+    }, 1000)
   }
 
   return (
-    <Fade in={letterDict[props.letter].show} timeout={500}>
-      <Card 
-        className={letterDict[props.letter]["active"] ? "raised" : "flat" }
-        sx={{height: '100%'}}
-        elevation={letterDict[props.letter]["active"] ? 24 : 1}
-        onClick={letterDict[props.letter].show ? (e) => selectCard(props.letter) : null }
-      >
-        <CardActionArea 
-          style={{ height: '100%' }}
-        >
-          {props.letter.length === 1 ?
-            <CardMedia
-              component="img"
-              image={imageURL}
-              alt="a"
-            />
-          :
-            <CardContent>
-              <Typography variant="h3" component="div" align="center">
-                {props.letter.slice(0,1)}
-              </Typography>
-            </CardContent>
-          }
-        </CardActionArea>
-      </Card>
-    </Fade>
+    <div className={`card card-dimensions ${letterDict[props.letter]["show"] ? 'show-card' : 'hide-card'}`}>
+			<div 
+				className={`card__inner ${ letterDict[props.letter]["active"] ? '' : 'is-flipped' }`}
+				onClick={flipCard}
+			>
+			<div className="card__face card__face--front">
+				<img 
+					src="/images/card-front.png" 
+					className="card-dimensions front-image"
+				/>
+        {props.letter.length === 1 ?
+					<img 
+						src={imageURL} 
+						className="card-dimensions"
+					/>
+					:
+					<h1>{props.letter.slice(0,1)}</h1>
+					}
+			</div>
+			<div className="card__face card__face--back">
+				<img 
+					src={backImageURL} 
+					className="card-dimensions"
+				/>
+			</div>
+		</div>
+	</div>
   );
 }
 
-export default CardElement
+export default CardElementFlip4

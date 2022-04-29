@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { CardGameContext } from "./CardGames";
+import { useParams } from "react-router-dom"
 
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,7 +10,9 @@ import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
 
-const CardElement = props => {
+const CardElementFlip = props => {
+
+  let params = useParams()
 
   const {
     letterDict,
@@ -26,6 +30,7 @@ const CardElement = props => {
 
   //const [selected, setSelected] = useState(false)
   const [showCard, setShowCard] = useState(true)
+  const [flipped, setFlipped] = useState(false)
 
   const selectCard = e => {
     if (selectedCard === null) {
@@ -62,34 +67,39 @@ const CardElement = props => {
     }, 200)
   }
 
+  const rotateCard = (e) => {
+  }
+
   return (
-    <Fade in={letterDict[props.letter].show} timeout={500}>
-      <Card 
-        className={letterDict[props.letter]["active"] ? "raised" : "flat" }
-        sx={{height: '100%'}}
-        elevation={letterDict[props.letter]["active"] ? 24 : 1}
-        onClick={letterDict[props.letter].show ? (e) => selectCard(props.letter) : null }
-      >
-        <CardActionArea 
-          style={{ height: '100%' }}
-        >
-          {props.letter.length === 1 ?
+    <div className="flipper-board">
+      <div className="flipper-tile">
+        <div className="flipper-tilewrap" ontouchstart="this.classNameList.add('istouchdevice');this.classNameList.toggle('hover');">
+          <div className="flipper-tilefront">
             <CardMedia
               component="img"
-              image={imageURL}
+              image="/images/card-back.png"
               alt="a"
             />
-          :
-            <CardContent>
-              <Typography variant="h3" component="div" align="center">
-                {props.letter.slice(0,1)}
-              </Typography>
-            </CardContent>
-          }
-        </CardActionArea>
-      </Card>
-    </Fade>
+          </div>
+          <div className="flipper-tileback">
+            {props.letter.length === 1 ?
+              <CardMedia
+                component="img"
+                image={imageURL}
+                alt="a"
+              />
+            :
+              <CardContent>
+                <Typography variant="h3" component="div" align="center">
+                  {props.letter.slice(0,1)}
+                </Typography>
+              </CardContent>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default CardElement
+export default CardElementFlip

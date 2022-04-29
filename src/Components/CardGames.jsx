@@ -19,7 +19,6 @@ const CardGames = props => {
   const initialMount = useRef(true)
   const navigate = useNavigate();
   let params = useParams();
-  console.log('params:', params)
 
   useEffect(() => {
     if (initialMount.current) {

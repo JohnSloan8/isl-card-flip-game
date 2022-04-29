@@ -1,14 +1,19 @@
 import { useEffect, useState, useContext } from "react";
 import { CardGameContext } from "./CardGames";
+import { useParams } from "react-router-dom"
 
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
+import ReactCardFlip from 'react-card-flip';
 
-const CardElement = props => {
+const CardElementFlip2 = props => {
+
+  let params = useParams()
 
   const {
     letterDict,
@@ -26,6 +31,7 @@ const CardElement = props => {
 
   //const [selected, setSelected] = useState(false)
   const [showCard, setShowCard] = useState(true)
+  const [flipped, setFlipped] = useState(true)
 
   const selectCard = e => {
     if (selectedCard === null) {
@@ -62,34 +68,46 @@ const CardElement = props => {
     }, 200)
   }
 
+  const rotateCard = (e) => {
+    setFlipped(!flipped)
+  }
+
   return (
-    <Fade in={letterDict[props.letter].show} timeout={500}>
-      <Card 
-        className={letterDict[props.letter]["active"] ? "raised" : "flat" }
-        sx={{height: '100%'}}
-        elevation={letterDict[props.letter]["active"] ? 24 : 1}
-        onClick={letterDict[props.letter].show ? (e) => selectCard(props.letter) : null }
-      >
-        <CardActionArea 
-          style={{ height: '100%' }}
-        >
-          {props.letter.length === 1 ?
+    <ReactCardFlip isFlipped={flipped} flipDirection="horizontal">
+      <Box onClick={rotateCard}>
+        <CardMedia
+          sx={{ boxShadow: '2px 2px 2px grey' }}
+          component="img"
+          image="/images/card-back.png"
+          alt="a"
+        />
+      </Box>
+      <Box sx={{position: 'relative', alignItems:"center"}} onClick={rotateCard}>
+        {props.letter.length === 1 ?
+          <CardMedia
+            sx={{ boxShadow: '2px 2px 2px grey', position: 'absolute' }}
+            component="img"
+            image={imageURL}
+            alt="a"
+          />
+          :
+          <Box sx={{position: 'relative', alignItems:"center"}}>
             <CardMedia
+              sx={{ boxShadow: '2px 2px 2px grey' }}
               component="img"
-              image={imageURL}
+              image="/images/white-card-background.png"
               alt="a"
             />
-          :
-            <CardContent>
-              <Typography variant="h3" component="div" align="center">
-                {props.letter.slice(0,1)}
-              </Typography>
-            </CardContent>
-          }
-        </CardActionArea>
-      </Card>
-    </Fade>
+            <Typography 
+               sx={{position: 'absolute', top: '25%', alignItems:"center"}} variant="h3" 
+            >
+              {props.letter.slice(0,1)}
+            </Typography>
+          </Box>
+        }
+      </Box>
+    </ReactCardFlip>
   );
 }
 
-export default CardElement
+export default CardElementFlip2
