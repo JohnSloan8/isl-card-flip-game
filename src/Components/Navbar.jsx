@@ -18,12 +18,11 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="absolute" sx={{ backgroundColor: '#c87137' }}>
+      <AppBar position="absolute" sx={{ background: "transparent", boxShadow: "none" }}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
             sx={{ mr: 2 }}
             onClick={redirectHome}
           >

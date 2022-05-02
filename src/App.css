@@ -1,9 +1,4 @@
-:root {
-  --primary: #FFCE00;
-  --secondary: #FE4880;
-  --dark: #212121;
-  --light: #F3F3F3;
-}
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Dancing+Script&display=swap');
 
 .App {
   position: absolute;
@@ -87,4 +82,8 @@
 .image-card {
   background-color: white;
   color: black;
+}
+
+.main-form {
+  margin-top: 4vh !important;
 }

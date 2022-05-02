@@ -9,15 +9,15 @@ const letterGroups = {
   "moving_consonants": ["j", "x", "z"]
 }
 
-const getLetterGroup = (letterType, imageType, number) => {
-  if (letterType === "all" && imageType === "photo") {
+const getLetterGroup = (gameType, imageType, number) => {
+  if (gameType === "all" && imageType === "photo") {
     let shuffledArray = shuffleArray(letterGroups["all_except_moving"])
     return [...shuffledArray].splice(0, number)
-  } else if (letterType === "static_consonants" || letterType === "consonants" || letterType === "all") {
-    let shuffledArray = shuffleArray(letterGroups[letterType])
+  } else if (gameType === "static_consonants" || gameType === "consonants" || gameType === "all") {
+    let shuffledArray = shuffleArray(letterGroups[gameType])
     return [...shuffledArray].splice(0, number)
   } else {
-    return letterGroups[letterType]
+    return letterGroups[gameType]
   }
 }
 

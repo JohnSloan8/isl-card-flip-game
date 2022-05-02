@@ -1,20 +1,12 @@
-import { useEffect, useState, useContext } from "react";
-import { CardGameContext } from "./CardGames";
+import { useEffect, useState, useContext, useRef } from "react";
+import { CardGameContext } from "../App";
 import { useParams } from "react-router-dom"
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import Fade from '@mui/material/Fade';
+const CardElementFlip4 = props => {
 
-const CardElementFlip = props => {
+  const params = useParams()
 
-  let params = useParams()
-
-  const {
+	const {
     letterDict,
     setLetterDict,
     selectedCard,
@@ -27,12 +19,8 @@ const CardElementFlip = props => {
   } = useContext(CardGameContext)
 
   let imageURL = imageURLPrefix + props.letter + ".png"
-
-  //const [selected, setSelected] = useState(false)
-  const [showCard, setShowCard] = useState(true)
-  const [flipped, setFlipped] = useState(false)
-
-  const selectCard = e => {
+  let backImageURL = "/images/card-back-" + params.imageType + ".png"
+  const flipCard = () => {
     if (selectedCard === null) {
       setLetterDict({...letterDict, [props.letter]: { active: true, show: true }})
       setSelectedCard(props.letter)
@@ -49,7 +37,6 @@ const CardElementFlip = props => {
         afterGuess(result)
       }
     }
-    //selected ? setSelected(false) : setSelected(true)
   }
 
   const afterGuess = r => {
@@ -64,42 +51,38 @@ const CardElementFlip = props => {
       } else {
         setLetterDict({...letterDict, [props.letter]: { active: false, show: true }, [selectedCard]: { active: false, show: true }})
       }
-    }, 200)
-  }
-
-  const rotateCard = (e) => {
+    }, 1000)
   }
 
   return (
-    <div className="flipper-board">
-      <div className="flipper-tile">
-        <div className="flipper-tilewrap" ontouchstart="this.classNameList.add('istouchdevice');this.classNameList.toggle('hover');">
-          <div className="flipper-tilefront">
-            <CardMedia
-              component="img"
-              image="/images/card-back.png"
-              alt="a"
-            />
-          </div>
-          <div className="flipper-tileback">
-            {props.letter.length === 1 ?
-              <CardMedia
-                component="img"
-                image={imageURL}
-                alt="a"
-              />
-            :
-              <CardContent>
-                <Typography variant="h3" component="div" align="center">
-                  {props.letter.slice(0,1)}
-                </Typography>
-              </CardContent>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
+    <div className={`card card-dimensions ${letterDict[props.letter]["show"] ? 'show-card' : 'hide-card'}`}>
+			<div 
+				className={`card__inner ${ letterDict[props.letter]["active"] ? '' : 'is-flipped' }`}
+				onClick={flipCard}
+			>
+			<div className="card__face card__face--front">
+				<img 
+					src="/images/card-front.png" 
+					className="card-dimensions front-image"
+				/>
+        {props.letter.length === 1 ?
+					<img 
+						src={imageURL} 
+						className="card-dimensions"
+					/>
+					:
+					<h1>{props.letter.slice(0,1)}</h1>
+					}
+			</div>
+			<div className="card__face card__face--back">
+				<img 
+					src={backImageURL} 
+					className="card-dimensions"
+				/>
+			</div>
+		</div>
+	</div>
   );
 }
 
-export default CardElementFlip
+export default CardElementFlip4
