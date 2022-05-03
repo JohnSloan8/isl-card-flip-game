@@ -77,7 +77,7 @@ const CardElementFlip = props => {
               <img 
                 src={imageURL} 
                 className="card-dimensions"
-                alt="none here"
+                alt="non here"
               />
               :
               <h1>{props.letter.slice(0,1)}</h1>
