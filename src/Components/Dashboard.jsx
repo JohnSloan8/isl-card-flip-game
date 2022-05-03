@@ -72,9 +72,9 @@ export default function Dashboard() {
       }
     })
     if (imageType === "drawing") {
-      setImageURLPrefix("/images/drawn-alphabet-images/isl-drawn-")
+      setImageURLPrefix("/assets/images/drawn-alphabet-images/isl-drawn-")
     } else {
-      setImageURLPrefix("/images/photo-alphabet-images/isl-photo-")
+      setImageURLPrefix("/assets/images/photo-alphabet-images/isl-photo-")
     }
 
     setLetterDict(tempLetterDict);
