@@ -78,6 +78,7 @@ const App = () => {
               <Routes>
                 <Route path="cardgame/:difficulty/:imageType/:game" element={<GameGrid />} />
                 <Route path="/" element={<Dashboard />} />
+                <Route path="*" element={<p>nothing here</p>} />
               </Routes>
             </Container>
           </div>
