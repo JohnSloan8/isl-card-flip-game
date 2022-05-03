@@ -16,8 +16,8 @@
 }
 
 .card-dimensions {
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
 }
 
 .front-image {
@@ -86,4 +86,18 @@
 
 .main-form {
   margin-top: 4vh !important;
+}
+
+.dark-card-letter {
+  background-color: black !important;
+  color: white !important;
+}
+
+.light-card-letter {
+  background-color: white !important;
+  color: black !important;
+}
+
+.main-title:hover {
+  cursor: pointer;
 }

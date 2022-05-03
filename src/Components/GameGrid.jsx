@@ -4,6 +4,7 @@ import CardElement from "./CardElement";
 import CardElementFlip from "./CardElementFlip";
 import { CardGameContext } from "../App";
 import { useContext } from "react";
+import Container from '@mui/material/Container';
 
 const GameGrid = () => {
   const {
@@ -12,17 +13,19 @@ const GameGrid = () => {
   } = useContext(CardGameContext)
 
   return (
-    <Grid container spacing={{ xs: 2 }}>
-      {cardOrder.map((letter, index) => (
-        <Grid item xs={4} sm={3} md={2} key={index}>
-          {difficulty === "easy" ? 
-            <CardElement letter={letter} />
-          :
-            <CardElementFlip letter={letter} />
-        }
-        </Grid>
-      ))}
-    </Grid>
+    <Container align="center" maxWidth="md" sx={{ paddingTop: '6vh' }}>
+      <Grid container spacing={{ xs: 2 }}>
+        {cardOrder.map((letter, index) => (
+          <Grid item xs={4} sm={3} md={2} key={index}>
+            {difficulty === "easy" ? 
+              <CardElement letter={letter} />
+            :
+              <CardElementFlip letter={letter} />
+          }
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 }
 

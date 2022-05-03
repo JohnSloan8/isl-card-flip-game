@@ -1,5 +1,5 @@
 import './App.css';
-import Navbar from './Components/Navbar';
+import MainTitle from './Components/MainTitle';
 import Dashboard from './Components/Dashboard';
 import GameGrid from './Components/GameGrid';
 import Container from '@mui/material/Container';
@@ -73,14 +73,12 @@ const App = () => {
       >
       <ThemeProvider theme={aladdinTheme}>
           <div className="App">
-            <Navbar sx={{zIndex: 100}} />
-            <Container maxWidth="md" sx={{top: 0, zIndex:1}}>
-              <Container sx={{marginTop: '10%'}}>
-                <Routes>
-                  <Route path="cardgame/:difficulty/:imageType/:game" element={<GameGrid />} />
-                  <Route path="/" element={<Dashboard />} />
-                </Routes>
-              </Container>
+            <MainTitle sx={{zIndex: 100}} />
+            <Container maxWidth="md">
+              <Routes>
+                <Route path="cardgame/:difficulty/:imageType/:game" element={<GameGrid />} />
+                <Route path="/" element={<Dashboard />} />
+              </Routes>
             </Container>
           </div>
       </ThemeProvider>

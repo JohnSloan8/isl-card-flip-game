@@ -40,11 +40,6 @@ export default function Dashboard() {
 
   const changeImageType = (event) => {
     setImageType(event.target.value);
-    if (event.target.value === "photo") {
-      document.getElementById('moving consonants').style.visibility = "hidden"
-    } else {
-      document.getElementById('moving consonants').style.visibility = "visible"
-    }
   };
 
   const changeGameType = (event) => {
@@ -61,10 +56,7 @@ export default function Dashboard() {
 
   const resetGame = () => {
 
-    console.log('gameType:', gameType)
-    console.log('imageType:', imageType)
     let letterArray = getLetterGroup(gameType.replace(/\s/g, '_'), imageType, 7)
-    console.log('letterArray', letterArray)
     let tempLetterDict = {}
     let tempActivePairs = []
     setStartTime(performance.now())
@@ -91,13 +83,14 @@ export default function Dashboard() {
   }
 
   return (
-    <Container align="center" maxWidth="xs" sx={{ padding: '8vw' }}>
+    <Container align="center" maxWidth="xs" sx={{ padding: '6vh' }}>
       <FormControl>
         <FormLabel>Difficulty</FormLabel>
         <Select
           value={difficulty}
           defaultValue={difficulty}
           onChange={changeDifficulty}
+          sx={{ width: '160px' }}
         >
           <MenuItem key='easy' value='easy'>easy</MenuItem>
           <MenuItem key='hard' value='hard'>hard</MenuItem>
@@ -110,6 +103,7 @@ export default function Dashboard() {
           value={imageType}
           defaultValue={imageType}
           onChange={changeImageType}
+          sx={{ width: '160px' }}
         >
           <MenuItem key='drawing' value='drawing'>drawing</MenuItem>
           <MenuItem key='photo' value='photo'>photo</MenuItem>
@@ -125,13 +119,19 @@ export default function Dashboard() {
           onChange={changeGameType}
         >
           {gameTypes.map((game) =>
+            (game !== "moving consonants" || imageType !== "photo") &&
             <FormControlLabel key={game} id={game} value={game} control={<Radio />} label={game} />
+            
           )}
         </RadioGroup>
 
       </FormControl>
       <br />
-      <Button className="main-form" variant="contained" onClick={startGame}>Start Game</Button>
+      <Button
+        className="main-form"
+        variant="contained"
+        size="large"
+        onClick={startGame}>Start Game</Button>
     </Container>
   );
 }

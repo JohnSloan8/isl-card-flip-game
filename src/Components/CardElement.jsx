@@ -6,8 +6,11 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
+import { useParams } from "react-router-dom"
 
 const CardElement = props => {
+
+  const params = useParams()
 
   const {
     letterDict,
@@ -64,12 +67,12 @@ const CardElement = props => {
   return (
     <Fade in={letterDict[props.letter].show} timeout={500}>
       <Card 
-        className={letterDict[props.letter]["active"] ? "raised" : "flat" }
+        className={`card-dimensions ${letterDict[props.letter]["active"] ? "raised" : "flat" } ${params.imageType === "photo" ? "dark-card-letter" : "light-card-letter"}`}
         sx={{height: '100%'}}
         elevation={letterDict[props.letter]["active"] ? 24 : 1}
         onClick={letterDict[props.letter].show ? (e) => selectCard(props.letter) : null }
       >
-        <CardActionArea 
+        <CardActionArea
           style={{ height: '100%' }}
         >
           {props.letter.length === 1 ?
@@ -79,7 +82,7 @@ const CardElement = props => {
               alt="a"
             />
           :
-            <CardContent>
+          <CardContent>
               <Typography variant="h3" component="div" align="center">
                 {props.letter.slice(0,1)}
               </Typography>
