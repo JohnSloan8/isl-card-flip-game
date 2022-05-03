@@ -3,7 +3,7 @@ import { CardGameContext } from "../App";
 import { useParams } from "react-router-dom"
 import Fade from '@mui/material/Fade';
 
-const CardElementFlip4 = props => {
+const CardElementFlip = props => {
 
   const params = useParams()
 
@@ -20,7 +20,8 @@ const CardElementFlip4 = props => {
   } = useContext(CardGameContext)
 
   let imageURL = imageURLPrefix + props.letter + ".png"
-  let backImageURL = "/images/card-back-" + params.imageType + ".png"
+  let backImageURL = "/assets/images/card-back-" + params.imageType + ".png"
+  console.log('backImageURL:', backImageURL)
   const flipCard = () => {
     if (!twoSelected) {
       if (selectedCard === null) {
@@ -69,7 +70,7 @@ const CardElementFlip4 = props => {
         >
           <div className={`card__face card__face--front ${params.imageType === "photo" ? "dark-card-letter" : "light-card-letter"}`}>
             <img 
-              src="/images/card-front.png" 
+              src="/assets/images/card-front.png" 
               className="card-dimensions front-image"
             />
             {props.letter.length === 1 ?
@@ -93,4 +94,4 @@ const CardElementFlip4 = props => {
   );
 }
 
-export default CardElementFlip4
+export default CardElementFlip

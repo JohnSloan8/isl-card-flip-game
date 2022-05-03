@@ -20,7 +20,7 @@ const GameGrid = () => {
             {difficulty === "easy" ? 
               <CardElement letter={letter} />
             :
-              <CardElementFlip letter={letter} />
+            <></>
           }
           </Grid>
         ))}

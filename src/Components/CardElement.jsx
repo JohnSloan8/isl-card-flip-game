@@ -49,6 +49,7 @@ const CardElement = props => {
     //selected ? setSelected(false) : setSelected(true)
   }
 
+  console.log('loaded ', props.letter)
   const afterGuess = r => {
     setSelectedCard(null)
     setTwoSelected(false)
