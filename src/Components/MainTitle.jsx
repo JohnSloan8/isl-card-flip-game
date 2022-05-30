@@ -16,6 +16,10 @@ export default function MainTitle() {
     navigate('/')
   }
 
+  const hoverTitle = () => {
+    navigate('/')
+  }
+
   return (
       <Box 
         onClick={redirectHome}
@@ -26,16 +30,16 @@ export default function MainTitle() {
           component="div" 
           align="center" 
           color="primary.main"
-          className="main-title"
+          fontFamily="Aladin"
         >
           Aladdin
         </Typography>
         <Typography 
-          variant="h5" 
+          variant="h6" 
           component="div" 
           align="center" 
           color="primary.main"
-          className="main-title"
+          fontFamily="Aladin"
         >
           ISL Alphabet Game
         </Typography>

@@ -98,6 +98,18 @@
   color: black !important;
 }
 
-.main-title:hover {
-  cursor: pointer;
+.lamp-container {
+  position: absolute !important; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+}
+
+.genie-lamp {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 0;
 }

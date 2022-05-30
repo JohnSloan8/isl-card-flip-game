@@ -11,7 +11,7 @@ const aladdinTheme = createTheme({
     }
   },
   typography: {
-    fontFamily: 'Aladin'
+    fontFamily: 'sans serif'
   }
 })
 
