@@ -51,8 +51,12 @@ const CardElementFlip = props => {
     setTimeout( () => {
       setTwoSelected(false)
       if ( r ) {
+        props.shakeLamp();
         setLetterDict({...letterDict, [props.letter]: { active: true, show: false}, [selectedCard]: { active: true, show: false}})
         let newActivePairs = activePairs.filter( item => item !== props.letter && item !== selectedCard)
+        if (newActivePairs.length === 0) {
+          props.genieAppear();
+        }
         setActivePairs(newActivePairs)
       } else {
         setLetterDict({...letterDict, [props.letter]: { active: false, show: true }, [selectedCard]: { active: false, show: true }})

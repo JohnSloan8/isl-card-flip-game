@@ -39,9 +39,9 @@ const App = () => {
       if (activePairs.length === 0) {
         let timeTaken = (performance.now() - startTime) / 1000
         setTimeout(() => {
-        alert('you finished in: ' + timeTaken.toString() + " seconds")
+        alert('Well done, you finished in: ' + (Math.round(timeTaken*10)/10).toString() + " seconds")
           navigate('/')
-        }, 300)
+        }, 1000)
       }
     }
   }, [activePairs])
