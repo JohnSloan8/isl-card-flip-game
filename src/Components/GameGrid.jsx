@@ -44,12 +44,12 @@ const GameGrid = () => {
     `
     genieRef.current.hidden = false
     let genieAppearTween = gsap.timeline();
-    let scaleMult = 0.75 * ['weak', 'normal', 'strong', 'all powerful'].indexOf(genieScale[0]) + 0.5
-    genieAppearTween.fromTo(genieRef.current, {scale: 0, y:'25%', x:'5%'}, {scale: scaleMult, y: '-175%', x:'0%'})
+    let scaleMult = 0.5 * ['weak', 'normal', 'strong', 'all powerful'].indexOf(genieScale[0]) + 0.25
+    genieAppearTween.fromTo(genieRef.current, {scale: 0, y:'25%', x:'5%'}, {scale: scaleMult, y: '-50%', x:'0%'})
     setTimeout(() => {
     alert('Your time: ' +(Math.round(timeTaken*10)/10).toString() + " seconds" + '\n\n' + 'Genie strength: ' + genieScale[0] + '\n\n' + "Levels:" + '\n' + levelText)
       navigate('/')
-    }, 1000)
+    }, 2000)
   }
 
   const getGenieScale = (timeTaken) => {
