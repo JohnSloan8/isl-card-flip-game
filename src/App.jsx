@@ -10,7 +10,7 @@ import {
 import { ThemeProvider } from '@mui/material'
 import aladdinTheme from './mui-theme'
 import { createContext, useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 export const CardGameContext = createContext();
 
@@ -28,7 +28,6 @@ const App = () => {
   const [imageURLPrefix, setImageURLPrefix] = useState('')
 
   const initialMount = useRef(true)
-  const navigate = useNavigate();
   let params = useParams();
 
   useEffect(() => {
@@ -36,13 +35,6 @@ const App = () => {
       initialMount.current = false;
       //resetGame();
     } else {
-      if (activePairs.length === 0) {
-        let timeTaken = (performance.now() - startTime) / 1000
-        setTimeout(() => {
-        alert('Well done, you finished in: ' + (Math.round(timeTaken*10)/10).toString() + " seconds")
-          navigate('/')
-        }, 1000)
-      }
     }
   }, [activePairs])
 

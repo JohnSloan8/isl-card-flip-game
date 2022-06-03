@@ -24,6 +24,7 @@ export default function MainTitle() {
       <Box 
         onClick={redirectHome}
         className="main-title"
+	paddingTop={2}
       >
         <Typography 
           variant="h3" 

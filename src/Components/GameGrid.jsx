@@ -6,13 +6,18 @@ import { CardGameContext } from "../App";
 import { useContext } from "react";
 import Container from '@mui/material/Container';
 import { gsap } from 'gsap'
+import timings from "../data/timings"
+import { useNavigate } from "react-router-dom"
 
 const GameGrid = () => {
   const {
     difficulty,
-    cardOrder
+    gameType,
+    cardOrder,
+    startTime
   } = useContext(CardGameContext)
 
+  const navigate = useNavigate();
   let genieImageURL = "/assets/images/genie-cropped.png"
   let lampImageURL = "/assets/images/lamp-cropped.png"
 
@@ -29,9 +34,39 @@ const GameGrid = () => {
   }
 
   const genieAppear = () => {
+    let timeTaken = (performance.now() - startTime) / 1000
+    let genieScale = getGenieScale(timeTaken);
+    let levelText = `
+       all powerful: ${genieScale[1][0]}s
+       strong: ${genieScale[1][1]}s
+       normal: ${genieScale[1][2]}s
+       weak: ${genieScale[1][2]}+s
+    `
     genieRef.current.hidden = false
     let genieAppearTween = gsap.timeline();
-    genieAppearTween.fromTo(genieRef.current, {scale: 0, y:'25%', x:'5%'}, {scale: 1.5, y: '-35%', x:'0%'})
+    let scaleMult = 0.75 * ['weak', 'normal', 'strong', 'all powerful'].indexOf(genieScale[0]) + 0.5
+    genieAppearTween.fromTo(genieRef.current, {scale: 0, y:'25%', x:'5%'}, {scale: scaleMult, y: '-175%', x:'0%'})
+    setTimeout(() => {
+    alert('Your time: ' +(Math.round(timeTaken*10)/10).toString() + " seconds" + '\n\n' + 'Genie strength: ' + genieScale[0] + '\n\n' + "Levels:" + '\n' + levelText)
+      navigate('/')
+    }, 1000)
+  }
+
+  const getGenieScale = (timeTaken) => {
+    console.log('timeTaken:', timeTaken) 
+    console.log('difficulty:', difficulty)
+    console.log('gameType:', gameType)
+    let timeLevels = timings[difficulty][gameType]
+    console.log('timeLevels:', timeLevels) 
+    let level = "weak"
+    if (timeTaken < timeLevels[0]) {
+      level = "all powerful"
+    } else if (timeTaken < timeLevels[1]) {
+      level = "strong"
+    } else if (timeTaken < timeLevels[2]) {
+      level = "normal"
+    }
+    return [level, timeLevels]
   }
 
   return (
