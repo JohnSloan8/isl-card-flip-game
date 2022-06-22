@@ -1,25 +1,24 @@
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Box from '@mui/material/Box';
-import { Link } from "react-router-dom";
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Box from "@mui/material/Box";
+
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import { useNavigate } from "react-router-dom"
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import { useNavigate } from "react-router-dom";
 import { CardGameContext } from "../App";
 import { useContext } from "react";
-import getLetterGroup from "../data/letter-groups.jsx"
-import { shuffleArray } from "../utils"
+import getLetterGroup from "../data/letter-groups.jsx";
+import { shuffleArray } from "../utils";
 
 export default function Dashboard() {
-
   const {
     difficulty,
     setDifficulty,
@@ -31,8 +30,8 @@ export default function Dashboard() {
     setImageURLPrefix,
     setLetterDict,
     setActivePairs,
-    setCardOrder
-  } = useContext(CardGameContext)
+    setCardOrder,
+  } = useContext(CardGameContext);
 
   const changeDifficulty = (event) => {
     setDifficulty(event.target.value);
@@ -48,52 +47,61 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
   const startGame = () => {
-    resetGame()
-    navigate(`/cardgame/${difficulty}/${imageType}/${gameType.replace(/\s/g, '_')}`)
-  }
+    resetGame();
+    navigate(
+      `/cardgame/${difficulty}/${imageType}/${gameType.replace(/\s/g, "_")}`
+    );
+  };
 
   const gameTypes = ["vowels", "static consonants", "moving consonants", "all"];
 
   const resetGame = () => {
-
-    let letterArray = getLetterGroup(gameType.replace(/\s/g, '_'), imageType, 7)
-    let tempLetterDict = {}
-    let tempActivePairs = []
-    setStartTime(performance.now())
-    letterArray.forEach(l => {
-      tempActivePairs.push(l)
+    let letterArray = getLetterGroup(
+      gameType.replace(/\s/g, "_"),
+      imageType,
+      7
+    );
+    let tempLetterDict = {};
+    let tempActivePairs = [];
+    setStartTime(performance.now());
+    letterArray.forEach((l) => {
+      tempActivePairs.push(l);
       tempLetterDict[l] = {
-        active : false,
+        active: false,
         show: true,
-      }
-      tempLetterDict[l + '_l'] = {
-        active : false,
+      };
+      tempLetterDict[l + "_l"] = {
+        active: false,
         show: true,
-      }
-    })
+      };
+    });
     if (imageType === "drawing") {
-      setImageURLPrefix("/assets/images/drawn-alphabet-images/isl-drawn-")
+      setImageURLPrefix("/assets/images/drawn-alphabet-images/isl-drawn-");
     } else {
-      setImageURLPrefix("/assets/images/photo-alphabet-images/isl-photo-")
+      setImageURLPrefix("/assets/images/photo-alphabet-images/isl-photo-");
     }
 
     setLetterDict(tempLetterDict);
     setActivePairs(tempActivePairs);
-    setCardOrder(shuffleArray(Object.keys(tempLetterDict)))
-  }
+    setCardOrder(shuffleArray(Object.keys(tempLetterDict)));
+  };
 
   return (
-    <Container align="center" maxWidth="xs" sx={{ padding: '6vh' }}>
+    <Container align="center" maxWidth="xs" sx={{ padding: "6vh" }}>
       <FormControl>
         <FormLabel>Difficulty</FormLabel>
         <Select
           value={difficulty}
           defaultValue={difficulty}
           onChange={changeDifficulty}
-          sx={{ width: '160px' }}
+          sx={{ width: "160px" }}
         >
-          <MenuItem key='easy' value='easy'>easy</MenuItem>
-          <MenuItem key='hard' value='hard'>hard</MenuItem>
+          <MenuItem key="easy" value="easy">
+            easy
+          </MenuItem>
+          <MenuItem key="hard" value="hard">
+            hard
+          </MenuItem>
         </Select>
       </FormControl>
       <br />
@@ -103,10 +111,14 @@ export default function Dashboard() {
           value={imageType}
           defaultValue={imageType}
           onChange={changeImageType}
-          sx={{ width: '160px' }}
+          sx={{ width: "160px" }}
         >
-          <MenuItem key='drawing' value='drawing'>drawing</MenuItem>
-          <MenuItem key='photo' value='photo'>photo</MenuItem>
+          <MenuItem key="drawing" value="drawing">
+            drawing
+          </MenuItem>
+          <MenuItem key="photo" value="photo">
+            photo
+          </MenuItem>
         </Select>
       </FormControl>
       <br />
@@ -118,20 +130,29 @@ export default function Dashboard() {
           name="radio-buttons-group"
           onChange={changeGameType}
         >
-          {gameTypes.map((game) =>
-            (game !== "moving consonants" || imageType !== "photo") &&
-            <FormControlLabel key={game} id={game} value={game} control={<Radio />} label={game} />
-            
+          {gameTypes.map(
+            (game) =>
+              (game !== "moving consonants" || imageType !== "photo") && (
+                <FormControlLabel
+                  key={game}
+                  id={game}
+                  value={game}
+                  control={<Radio />}
+                  label={game}
+                />
+              )
           )}
         </RadioGroup>
-
       </FormControl>
       <br />
       <Button
         className="main-form"
         variant="contained"
         size="large"
-        onClick={startGame}>Start Game</Button>
+        onClick={startGame}
+      >
+        Start Game
+      </Button>
     </Container>
   );
 }
