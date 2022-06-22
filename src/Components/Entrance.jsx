@@ -16,37 +16,30 @@ export default function Entrance() {
 
   return (
     <Container align="center" maxWidth="xs" sx={{ padding: "2vh" }}>
-      <Box mt={2}>
+      <Box mt={0}>
         <Typography variant="p">
           Match ISL hand signs and letters to free the genie
         </Typography>
       </Box>
-      <Box mt={2} p={4}>
+      <Box mt={0} p={4}>
         <img width="100%" src={exampleVideo1} />
       </Box>
-      <Box mt={2}>
+      <Box mt={0}>
         <Typography variant="p">
           The faster you are, the stronger the genie becomes!
         </Typography>
       </Box>
-      <Box mt={2} p={4}>
-        <img width="100%" src={exampleVideo2} />
+      <Box mt={1} p={4}>
+        <img width="50%%" src={exampleVideo2} />
       </Box>
-      <Box mt={2}>
+      <Box mt={0}>
         <Typography variant="p">
           Can you help the genie reach maximum strength?
         </Typography>
       </Box>
-      <Box mt={2}>
-        <Typography variant="p">
-          To help, here is a{" "}
-          <a
-            href="https://www.irishdeafsociety.ie/wp-content/uploads/2014/07/irish-sign-language-letters.pdf"
-            target="_blank"
-          >
-            document
-          </a>{" "}
-          with all the signs
+      <Box mt={1}>
+        <Typography variant="p" color="gray">
+          (Click the list icon on the top left for the full ISL alphabet)
         </Typography>
       </Box>
       <Button

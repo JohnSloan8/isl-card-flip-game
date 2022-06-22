@@ -48,19 +48,13 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const startGame = () => {
     resetGame();
-    navigate(
-      `/cardgame/${difficulty}/${imageType}/${gameType.replace(/\s/g, "_")}`
-    );
+    navigate(`/cardgame/${difficulty}/${imageType}/${gameType}`);
   };
 
-  const gameTypes = ["vowels", "static consonants", "moving consonants", "all"];
+  const gameTypes = ["vowels", "static_consonants", "moving_consonants", "all"];
 
   const resetGame = () => {
-    let letterArray = getLetterGroup(
-      gameType.replace(/\s/g, "_"),
-      imageType,
-      7
-    );
+    let letterArray = getLetterGroup(gameType, imageType, 7);
     let tempLetterDict = {};
     let tempActivePairs = [];
     setStartTime(performance.now());
@@ -132,13 +126,13 @@ export default function Dashboard() {
         >
           {gameTypes.map(
             (game) =>
-              (game !== "moving consonants" || imageType !== "photo") && (
+              (game !== "moving_consonants" || imageType !== "photo") && (
                 <FormControlLabel
                   key={game}
                   id={game}
                   value={game}
                   control={<Radio />}
-                  label={game}
+                  label={game.replace("_", " ")}
                 />
               )
           )}

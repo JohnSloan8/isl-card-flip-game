@@ -1,16 +1,16 @@
 const timings = {
-  "easy": {
-    "vowels": [6,10,16],
-    "moving consonants": [4,6,10],
-    "static consonants": [6,10,16],
-    "all": [6,10,16]
+  easy: {
+    vowels: [8, 14, 24],
+    moving_consonants: [6, 10, 18],
+    static_consonants: [8, 1432],
+    all: [8, 14, 24],
   },
-  "difficult": {
-    "vowels": [10,16,24],
-    "moving consonants": [6,10,15],
-    "static consonants": [15,25,40],
-    "all": [15,25,40]
-  }
-}
+  difficult: {
+    vowels: [14, 24, 32],
+    moving_consonants: [8, 14, 24],
+    static_consonants: [14, 32, 48],
+    all: [24, 32, 48],
+  },
+};
 
-export default timings
+export default timings;

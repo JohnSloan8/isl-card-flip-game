@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import aladdinTheme from "./mui-theme";
 import { createContext, useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export const CardGameContext = createContext();
 
