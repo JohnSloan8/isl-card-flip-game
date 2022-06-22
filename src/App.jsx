@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import aladdinTheme from "./mui-theme";
 import { createContext, useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const CardGameContext = createContext();
 
@@ -23,9 +23,9 @@ const App = () => {
   const [activePairs, setActivePairs] = useState([]);
   const [startTime, setStartTime] = useState(performance.now());
   const [imageURLPrefix, setImageURLPrefix] = useState("");
-
   const initialMount = useRef(true);
   const navigate = useNavigate();
+
   let params = useParams();
 
   useEffect(() => {
