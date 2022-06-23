@@ -31,6 +31,7 @@ export default function Entrance() {
     setImageURLPrefix("/assets/images/drawn-alphabet-images/isl-drawn-");
     let genieAppearTween = gsap.timeline();
     genieRef.current.style.scale = 0.2;
+    genieRef.current.style.bottom = "-20%";
     setTimeout(() => {
       genieAppearTween.fromTo(
         genieRef.current,
@@ -62,7 +63,7 @@ export default function Entrance() {
         <img src={genieImageURL} ref={genieRef} width="100%" />
         {/* <img width="50%%" src={exampleVideo2} /> */}
       </Box>
-      <Box mt={2}>
+      <Box mt={8}>
         <Typography variant="p">
           Can you help the genie reach maximum strength?
         </Typography>
