@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import ArticleIcon from "@mui/icons-material/Article";
 import { useNavigate } from "react-router-dom";
-import { NestCamWiredStandTwoTone } from "@mui/icons-material";
+import Grid from "@mui/material/Grid";
 
 export default function MainTitle() {
   const navigate = useNavigate();
@@ -22,53 +22,71 @@ export default function MainTitle() {
 
   return (
     <Box className="main-title" sx={{ cursor: "pointer" }}>
-      <a
-        href="https://www.irishdeafsociety.ie/wp-content/uploads/2014/07/irish-sign-language-letters.pdf"
-        target="_blank"
-      >
-        <ArticleIcon
-          fontSize="large"
+      <Grid container spacing={{ xs: 2 }}>
+        <Grid
+          item
+          xs={2}
           sx={{
-            position: "absolute",
-            left: "20px",
-            top: "28px",
-            color: "primary.main",
-            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-        />
-      </a>
-      <Typography
-        variant="h3"
-        component="div"
-        align="center"
-        color="primary.main"
-        fontFamily="Aladin"
-        mt={1}
-        onClick={redirectHome}
-      >
-        Aladdin
-      </Typography>
-      <Typography
-        variant="h6"
-        component="div"
-        align="center"
-        color="primary.main"
-        fontFamily="Aladin"
-        onClick={redirectHome}
-        sx={{ cursor: "pointer" }}
-      >
-        ISL Alphabet Game
-      </Typography>
-      <QuestionMarkIcon
-        fontSize="large"
-        sx={{
-          position: "absolute",
-          right: "20px",
-          top: "28px",
-          color: "primary.main",
-        }}
-        onClick={redirectInfo}
-      />
+        >
+          <a
+            href="https://www.irishdeafsociety.ie/wp-content/uploads/2014/07/irish-sign-language-letters.pdf"
+            target="_blank"
+          >
+            <ArticleIcon
+              fontSize="large"
+              sx={{
+                color: "primary.main",
+                cursor: "pointer",
+              }}
+            />
+          </a>
+        </Grid>
+        <Grid item xs={8}>
+          <Typography
+            variant="h3"
+            component="div"
+            align="center"
+            color="primary.main"
+            fontFamily="Aladin"
+            mt={1}
+            onClick={redirectHome}
+          >
+            Aladdin
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            align="center"
+            color="primary.main"
+            fontFamily="Aladin"
+            onClick={redirectHome}
+            sx={{ cursor: "pointer" }}
+          >
+            ISL Alphabet Game
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          xs={2}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <QuestionMarkIcon
+            fontSize="large"
+            sx={{
+              color: "primary.main",
+            }}
+            onClick={redirectInfo}
+          />
+        </Grid>
+      </Grid>
     </Box>
   );
 }

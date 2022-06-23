@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import Grid from "@mui/material/Grid";
 import CardElement from "./CardElement";
 import CardElementFlip from "./CardElementFlip";
 import { CardGameContext } from "../App";
@@ -8,6 +7,7 @@ import Container from "@mui/material/Container";
 import { gsap } from "gsap";
 import timings from "../data/timings";
 import { useNavigate } from "react-router-dom";
+import Grid from "@mui/material/Grid";
 
 const GameGrid = () => {
   const { difficulty, gameType, cardOrder, startTime } =
@@ -56,7 +56,7 @@ const GameGrid = () => {
     genieAppearTween.fromTo(
       genieRef.current,
       { scale: 0, y: "25%", x: "5%" },
-      { scale: scaleMult, y: "-50%", x: `${-2 * scaleMult}` }
+      { scale: scaleMult, y: "-50%", x: `${-2 * scaleMult}`, duration: 2 }
     );
     setTimeout(() => {
       alert(
@@ -72,7 +72,7 @@ const GameGrid = () => {
           levelText
       );
       navigate("/dashboard");
-    }, 1500);
+    }, 2500);
   };
 
   const getGenieScale = (timeTaken) => {

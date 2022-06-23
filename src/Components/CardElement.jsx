@@ -105,6 +105,10 @@ const CardElement = (props) => {
         }
       >
         <CardActionArea style={{ height: "100%" }}>
+          <img
+            src="/assets/images/card-front.png"
+            className="card-dimensions front-image easy-image"
+          />
           {props.letter.length === 1 ? (
             <CardMedia component="img" image={imageURL} alt="a" />
           ) : (

@@ -9,7 +9,7 @@ const aladdinTheme = createTheme({
       light: blue[200],
     },
     secondary: {
-      main: deepOrange[400],
+      main: "#bea100",
     },
   },
   typography: {

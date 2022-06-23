@@ -2,6 +2,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -51,14 +52,21 @@ export default function Dashboard() {
     navigate(`/cardgame/${difficulty}/${imageType}/${gameType}`);
   };
 
-  const gameTypes = ["vowels", "static_consonants", "moving_consonants", "all"];
+  const gameTypes = [
+    "vowels",
+    "non_moving_consonants",
+    "moving_consonants",
+    "all",
+  ];
 
   const resetGame = () => {
     let letterArray = getLetterGroup(gameType, imageType, 7);
     let tempLetterDict = {};
     let tempActivePairs = [];
     setStartTime(performance.now());
+
     letterArray.forEach((l) => {
+      console.log("letter:", l);
       tempActivePairs.push(l);
       tempLetterDict[l] = {
         active: false,
@@ -132,13 +140,12 @@ export default function Dashboard() {
                   id={game}
                   value={game}
                   control={<Radio />}
-                  label={game.replace("_", " ")}
+                  label={game.replaceAll("_", " ")}
                 />
               )
           )}
         </RadioGroup>
       </FormControl>
-      <br />
       <Button
         className="main-form"
         variant="contained"

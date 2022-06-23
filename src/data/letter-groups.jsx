@@ -78,7 +78,7 @@ const letterGroups = {
     "w",
     "y",
   ],
-  static_consonants: [
+  non_moving_consonants: [
     "b",
     "c",
     "d",
@@ -106,7 +106,7 @@ const getLetterGroup = (gameType, imageType, number) => {
     let shuffledArray = shuffleArray(letterGroups["all_except_moving"]);
     return [...shuffledArray].splice(0, number);
   } else if (
-    gameType === "static_consonants" ||
+    gameType === "non_moving_consonants" ||
     gameType === "consonants" ||
     gameType === "all"
   ) {

@@ -1,15 +1,15 @@
 const timings = {
   easy: {
-    vowels: [8, 14, 24],
-    moving_consonants: [6, 10, 18],
-    static_consonants: [8, 1432],
-    all: [8, 14, 24],
+    vowels: [10, 15, 20],
+    moving_consonants: [5, 8, 12],
+    non_moving_consonants: [15, 25, 35],
+    all: [15, 25, 35],
   },
-  difficult: {
-    vowels: [14, 24, 32],
-    moving_consonants: [8, 14, 24],
-    static_consonants: [14, 32, 48],
-    all: [24, 32, 48],
+  hard: {
+    vowels: [20, 32, 48],
+    moving_consonants: [12, 20, 32],
+    non_moving_consonants: [30, 45, 60],
+    all: [30, 45, 60],
   },
 };
 

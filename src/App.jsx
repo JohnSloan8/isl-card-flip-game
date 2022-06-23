@@ -18,7 +18,10 @@ const App = () => {
   const [gameType, setGameType] = useState("vowels");
   const [selectedCard, setSelectedCard] = useState(null);
   const [twoSelected, setTwoSelected] = useState(false);
-  const [letterDict, setLetterDict] = useState({});
+  const [letterDict, setLetterDict] = useState({
+    a: { active: false, show: true },
+    a_l: { active: false, show: true },
+  });
   const [cardOrder, setCardOrder] = useState([]);
   const [activePairs, setActivePairs] = useState([]);
   const [startTime, setStartTime] = useState(performance.now());
@@ -74,7 +77,9 @@ const App = () => {
     >
       <ThemeProvider theme={aladdinTheme}>
         <div className="App">
-          <MainTitle sx={{ zIndex: 100 }} />
+          <Container maxWidth="xs">
+            <MainTitle sx={{ zIndex: 100 }} />
+          </Container>
           <Container maxWidth="md">
             <Routes>
               <Route
