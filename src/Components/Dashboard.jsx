@@ -146,14 +146,16 @@ export default function Dashboard() {
           )}
         </RadioGroup>
       </FormControl>
-      <Button
-        className="main-form"
-        variant="contained"
-        size="large"
-        onClick={startGame}
-      >
-        Start Game
-      </Button>
+      <Box>
+        <Button
+          className="main-form"
+          variant="contained"
+          size="large"
+          onClick={startGame}
+        >
+          Start Game
+        </Button>
+      </Box>
     </Container>
   );
 }
