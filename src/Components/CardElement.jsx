@@ -98,13 +98,13 @@ const CardElement = (props) => {
             ? "dark-card-letter"
             : "light-card-letter"
         }`}
-        sx={{ height: "100%" }}
+        sx={{ height: "100" }}
         elevation={letterDict[props.letter]["active"] ? 24 : 1}
         onClick={
           letterDict[props.letter].show ? (e) => selectCard(props.letter) : null
         }
       >
-        <CardActionArea style={{ height: "100%" }}>
+        <CardActionArea style={{ height: "100" }}>
           <img
             src="/assets/images/card-front.png"
             className="card-dimensions front-image easy-image"

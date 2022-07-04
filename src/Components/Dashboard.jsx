@@ -140,7 +140,11 @@ export default function Dashboard() {
                   id={game}
                   value={game}
                   control={<Radio />}
-                  label={game.replaceAll("_", " ")}
+                  label={
+                    <Typography variant="p">
+                      {game.replaceAll("_", " ")}
+                    </Typography>
+                  }
                 />
               )
           )}
