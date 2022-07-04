@@ -6,11 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Fade from "@mui/material/Fade";
-import { useParams } from "react-router-dom";
 
 const CardElement = (props) => {
-  const params = useParams();
-
   const {
     letterDict,
     setLetterDict,
@@ -21,6 +18,7 @@ const CardElement = (props) => {
     activePairs,
     setActivePairs,
     imageURLPrefix,
+    imageType,
   } = useContext(CardGameContext);
 
   let imageURL = imageURLPrefix + props.letter + ".png";
@@ -93,11 +91,7 @@ const CardElement = (props) => {
       <Card
         className={`card-dimensions ${
           letterDict[props.letter]["active"] ? "raised" : "flat"
-        } ${
-          params.imageType === "photo"
-            ? "dark-card-letter"
-            : "light-card-letter"
-        }`}
+        } ${imageType === "photo" ? "dark-card-letter" : "light-card-letter"}`}
         sx={{ height: "100" }}
         elevation={letterDict[props.letter]["active"] ? 24 : 1}
         onClick={

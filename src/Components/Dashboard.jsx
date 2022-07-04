@@ -49,7 +49,8 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const startGame = () => {
     resetGame();
-    navigate(`/cardgame/${difficulty}/${imageType}/${gameType}`);
+    // navigate(`/cardgame/${difficulty}/${imageType}/${gameType}`);
+    navigate("/cardgame");
   };
 
   const gameTypes = [

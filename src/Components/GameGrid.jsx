@@ -20,6 +20,16 @@ const GameGrid = () => {
   const lampRef = useRef();
   const genieRef = useRef();
 
+  useEffect(() => {
+    if (cardOrder.length === 0) {
+      navigate("/dashboard");
+    }
+    console.log("difficulty:", difficulty);
+    console.log("gameType:", gameType);
+    console.log("cardOrder:", cardOrder);
+    console.log("startTime:", startTime);
+  }, []);
+
   const shakeLamp = () => {
     let randomXShake = 1 + Math.random() * 2;
     let randomYShake = 1 + Math.random() * 2;

@@ -82,10 +82,7 @@ const App = () => {
           </Container>
           <Container maxWidth="md">
             <Routes>
-              <Route
-                path="cardgame/:difficulty/:imageType/:game"
-                element={<GameGrid />}
-              />
+              <Route path="cardgame" element={<GameGrid />} />
               <Route path="/" element={<Entrance />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<p>nothing here</p>} />
