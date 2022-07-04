@@ -91,7 +91,9 @@ export default function Dashboard() {
   return (
     <Container align="center" maxWidth="xs" sx={{ padding: "6vh" }}>
       <FormControl>
-        <FormLabel>Difficulty</FormLabel>
+        <FormLabel>
+          <Typography variant="h6">Difficulty</Typography>
+        </FormLabel>
         <Select
           value={difficulty}
           defaultValue={difficulty}
@@ -108,7 +110,9 @@ export default function Dashboard() {
       </FormControl>
       <br />
       <FormControl className="main-form">
-        <FormLabel>Image Type</FormLabel>
+        <FormLabel>
+          <Typography variant="h6">Image Type</Typography>
+        </FormLabel>
         <Select
           value={imageType}
           defaultValue={imageType}
@@ -125,7 +129,9 @@ export default function Dashboard() {
       </FormControl>
       <br />
       <FormControl className="main-form">
-        <FormLabel>Letter Group</FormLabel>
+        <FormLabel>
+          <Typography variant="h6">Letter Group</Typography>
+        </FormLabel>
         <RadioGroup
           value={gameType}
           defaultValue={gameType}
