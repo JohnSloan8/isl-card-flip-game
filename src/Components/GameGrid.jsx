@@ -24,10 +24,6 @@ const GameGrid = () => {
     if (cardOrder.length === 0) {
       navigate("/dashboard");
     }
-    console.log("difficulty:", difficulty);
-    console.log("gameType:", gameType);
-    console.log("cardOrder:", cardOrder);
-    console.log("startTime:", startTime);
   }, []);
 
   const shakeLamp = () => {
@@ -106,8 +102,8 @@ const GameGrid = () => {
 
   return (
     <>
-      <Container align="center" maxWidth="md" sx={{ paddingTop: "3vh" }}>
-        <Grid container spacing={{ xs: 2 }}>
+      <Container align="center" maxWidth="md" sx={{ paddingTop: 0 }}>
+        <Grid container spacing={{ xs: 1 }}>
           {cardOrder.map((letter, index) => (
             <Grid item xs={4} sm={3} md={2} key={index}>
               {difficulty === "easy" ? (

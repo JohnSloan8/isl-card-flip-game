@@ -18,6 +18,7 @@ import { CardGameContext } from "../App";
 import { useContext } from "react";
 import getLetterGroup from "../data/letter-groups.jsx";
 import { shuffleArray } from "../utils";
+import BasicButton from "./BasicButton";
 
 export default function Dashboard() {
   const {
@@ -93,7 +94,7 @@ export default function Dashboard() {
     <Container align="center" maxWidth="xs" sx={{ padding: "6vh" }}>
       <FormControl>
         <FormLabel>
-          <Typography variant="h6">Difficulty</Typography>
+          <Typography variant="body1">Difficulty</Typography>
         </FormLabel>
         <Select
           value={difficulty}
@@ -112,7 +113,7 @@ export default function Dashboard() {
       <br />
       <FormControl className="main-form">
         <FormLabel>
-          <Typography variant="h6">Image Type</Typography>
+          <Typography variant="body1">Image Type</Typography>
         </FormLabel>
         <Select
           value={imageType}
@@ -131,7 +132,7 @@ export default function Dashboard() {
       <br />
       <FormControl className="main-form">
         <FormLabel>
-          <Typography variant="h6">Letter Group</Typography>
+          <Typography variant="body1">Letter Group</Typography>
         </FormLabel>
         <RadioGroup
           value={gameType}
@@ -148,7 +149,7 @@ export default function Dashboard() {
                   value={game}
                   control={<Radio />}
                   label={
-                    <Typography variant="p">
+                    <Typography variant="body2">
                       {game.replaceAll("_", " ")}
                     </Typography>
                   }
@@ -157,16 +158,7 @@ export default function Dashboard() {
           )}
         </RadioGroup>
       </FormControl>
-      <Box>
-        <Button
-          className="main-form"
-          variant="contained"
-          size="large"
-          onClick={startGame}
-        >
-          Start Game
-        </Button>
-      </Box>
+      <BasicButton onClick={startGame} text="start game" />
     </Container>
   );
 }

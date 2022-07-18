@@ -13,7 +13,7 @@ const aladdinTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: "sans serif",
+    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
   },
 });
 

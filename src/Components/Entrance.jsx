@@ -4,12 +4,14 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import BasicButton from "./BasicButton";
 import { Link } from "react-router-dom";
 import exampleVideo1 from "/assets/videos/game-example.gif";
 import exampleVideo2 from "/assets/videos/genie-grow-cropped.gif";
 import { useParams } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import CardElementFlip from "./CardElementFlip";
+import Stack from "@mui/material/Stack";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,9 +22,12 @@ export default function Entrance() {
   const { setLetterDict, setImageURLPrefix } = useContext(CardGameContext);
 
   const navigate = useNavigate();
-  const params = useParams();
+  // const params = useParams();
   const goToDashboard = () => {
     navigate(`/dashboard`);
+  };
+  const goToIntro1 = () => {
+    navigate(`/intro1`);
   };
   let genieImageURL = "/assets/images/genie-centered.png";
   const genieRef = useRef();
@@ -44,43 +49,54 @@ export default function Entrance() {
   const runCardFlipAnimation = () => {};
 
   return (
-    <Container align="center" maxWidth="xs" sx={{ padding: "2vh" }}>
-      <Box mt={2}>
+    <Container align="center" maxWidth="xs" sx={{ padding: "0" }}>
+      <Box mt={4}>
         <Typography variant="p">
-          Match ISL hand signs and letters to free the genie
+          Welcome to the world of <strong>Irish Sign Language</strong>!
+        </Typography>
+      </Box>
+      <Box mt={4}>
+        <Typography variant="p">
+          In this game, you will match ISL hand signs and letters to free a
+          genie
         </Typography>
       </Box>
       <Box mt={2}>
         <img width="67%" src={exampleVideo1} />
       </Box>
-      <Box mt={4}>
+      <Box mt={2}>
         <Typography variant="p">
           The faster you are, the stronger the genie becomes!
         </Typography>
       </Box>
-
-      <Box mt={1}>
-        <img src={exampleVideo2} ref={genieRef} width="67%" />
+      <Box mt={2}>
+        <img src={exampleVideo2} ref={genieRef} width="50%" />
         {/* <img width="50%%" src={exampleVideo2} /> */}
       </Box>
-      <Box mt={2}>
-        <Typography variant="p">
-          Can you help the genie reach maximum strength?
-        </Typography>
-      </Box>
-      <Box mt={2}>
-        <Typography variant="p" sx={{ fontColor: "grey", fontSize: "12px" }}>
-          (for an ISL help sheet, tap the top left icon)
-        </Typography>
-      </Box>
-      <Button
-        className="main-form"
-        variant="contained"
-        size="large"
-        onClick={goToDashboard}
+
+      {/* <BasicButton onClick={goToDashboard} text="Next" /> */}
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          marginBottom: "10px",
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 2002,
+        }}
       >
-        Next
-      </Button>
+        <Stack spacing={2} direction="row">
+          <Button variant="outlined" size="medium" onClick={goToIntro1}>
+            discover isl
+          </Button>
+          <Button variant="contained" size="medium" onClick={goToDashboard}>
+            select game
+          </Button>
+        </Stack>
+      </Box>
     </Container>
   );
 }

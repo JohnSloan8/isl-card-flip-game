@@ -37,7 +37,7 @@ export default function MainTitle() {
             target="_blank"
           >
             <ArticleIcon
-              fontSize="large"
+              fontSize="medium"
               sx={{
                 color: "primary.main",
                 cursor: "pointer",
@@ -47,7 +47,7 @@ export default function MainTitle() {
         </Grid>
         <Grid item xs={8}>
           <Typography
-            variant="h3"
+            variant="h4"
             component="div"
             align="center"
             color="primary.main"
@@ -58,13 +58,13 @@ export default function MainTitle() {
             Aladdin
           </Typography>
           <Typography
-            variant="h6"
+            variant="p"
             component="div"
             align="center"
             color="primary.main"
             fontFamily="Aladin"
             onClick={redirectHome}
-            sx={{ cursor: "pointer" }}
+            sx={{ cursor: "pointer", padding: 0 }}
           >
             ISL Alphabet Game
           </Typography>
@@ -74,12 +74,12 @@ export default function MainTitle() {
           xs={2}
           sx={{
             display: "flex",
+            fontSize: "medium",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
           <QuestionMarkIcon
-            fontSize="large"
             sx={{
               color: "primary.main",
             }}
