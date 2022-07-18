@@ -2,6 +2,7 @@ import { useEffect, useState, useContext, useRef } from "react";
 import { CardGameContext } from "../App";
 import { useParams } from "react-router-dom";
 import Fade from "@mui/material/Fade";
+import Typography from "@mui/material/Typography";
 
 const CardElementFlip = (props) => {
   const params = useParams();
@@ -106,7 +107,9 @@ const CardElementFlip = (props) => {
             {props.letter.length === 1 ? (
               <img src={imageURL} className="card-dimensions" alt="non here" />
             ) : (
-              <h1>{props.letter.slice(0, 1)}</h1>
+              <Typography variant="h3" component="div" align="center">
+                {props.letter.slice(0, 1)}
+              </Typography>
             )}
           </div>
           <div className="card__face card__face--back">
