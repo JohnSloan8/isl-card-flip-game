@@ -91,7 +91,11 @@ export default function Dashboard() {
   };
 
   return (
-    <Container align="center" maxWidth="xs" sx={{ padding: "6vh" }}>
+    <Container align="center" maxWidth="xs" sx={{ padding: "0vh" }}>
+      <Box my={2}>
+        <Typography variant="h6">Irish Sign Languge (ISL)</Typography>
+        <Typography variant="body1">- fingerspelling game -</Typography>
+      </Box>
       <FormControl>
         <FormLabel>
           <Typography variant="body1">Difficulty</Typography>

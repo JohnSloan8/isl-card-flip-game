@@ -50,10 +50,9 @@ export default function Entrance() {
 
   return (
     <Container align="center" maxWidth="xs" sx={{ padding: "0" }}>
-      <Box mt={4}>
-        <Typography variant="body1">
-          Welcome to <strong>Irish Sign Language (ISL)</strong>!
-        </Typography>
+      <Box mt={2}>
+        <Typography variant="h6">Irish Sign Languge (ISL)</Typography>
+        <Typography variant="body1">- welcome -</Typography>
       </Box>
       <Box mt={1}>
         <Typography variant="body1">
