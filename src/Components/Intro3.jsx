@@ -29,22 +29,17 @@ export default function Intro3() {
         />
       </Box>
       <Box mt={2}>
-        <Typography variant="body2" align="left">
-          Take a look at the fingerspelling chart above. You might notice a
-          resemblance between the signs and the written letters.
+        <Typography variant="body1" align="left">
+          You might notice a similarity between the signs and the written
+          letters. Do you think you can remember some of the signs in a memory
+          game? How about just the vowels to start?
         </Typography>
       </Box>
       <Box mt={2}>
-        <Typography variant="body2" align="left">
-          Do you think you can remember some of the signs in a memory game? (You
-          can download this chart at any time by tapping the icon on the top
-          left)
-        </Typography>
-      </Box>
-      <Box mt={2}>
-        <Typography variant="body2" align="left">
-          Let's start with the vowels. Look at A, E, I, O, and U. When you are
-          ready, tap NEXT and then start the game. Good luck!
+        <Typography variant="body1" align="left">
+          Look at A, E, I, O, and U. When you are ready, tap NEXT and then start
+          the game. (You can download this chart at any time by tapping the icon
+          on the top left)
         </Typography>
       </Box>
       <BasicButton onClick={goToDashboard} text="next" />

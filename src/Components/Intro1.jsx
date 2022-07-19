@@ -26,20 +26,20 @@ export default function Intro1() {
         <Typography variant="body1">- an introduction -</Typography>
       </Box>
       <Box mt={4}>
-        <Typography variant="body2" align="left">
+        <Typography variant="body1" align="left">
           ISL is the first and/or preferred language of 5000 Deaf people in
           Ireland. Including family, friends, and co-workers, over 40,000 people
           use ISL to communicate on a regular basis.
         </Typography>
       </Box>
       <Box mt={4}>
-        <Typography variant="body2" align="left">
+        <Typography variant="body1" align="left">
           Irish Sign Language is different from all other sign languages such as
           British Sign Language, American Sign Language etc.
         </Typography>
       </Box>
       <Box mt={4}>
-        <Typography variant="body2" align="left">
+        <Typography variant="body1" align="left">
           It is a visual and spatial language with its own distinct grammar. Not
           only is it a language of the hands, but also of the face and body
         </Typography>

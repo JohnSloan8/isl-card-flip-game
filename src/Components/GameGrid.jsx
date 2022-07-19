@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import BasicButton from "./BasicButton";
 
 const GameGrid = () => {
   const { difficulty, gameType, cardOrder, startTime } =
@@ -48,6 +48,10 @@ const GameGrid = () => {
     }
   }, []);
 
+  const chooseGame = () => {
+    navigate("/dashboard");
+  };
+
   const shakeLamp = () => {
     let randomXShake = 1 + Math.random() * 2;
     let randomYShake = 1 + Math.random() * 2;
@@ -67,7 +71,8 @@ const GameGrid = () => {
 
   const genieAppear = () => {
     console.log("genieAppear");
-    let timeTaken = (performance.now() - startTime) / 1000;
+    let timeTakenFloat = (performance.now() - startTime) / 1000;
+    let timeTaken = Math.round(timeTakenFloat * 10) / 10;
     let genieScale = getGenieScale(timeTaken);
     setYourTime(timeTaken);
     setYourLevel(genieScale[0]);
@@ -105,13 +110,13 @@ const GameGrid = () => {
   };
 
   const getGenieScale = (timeTaken) => {
-    console.log("timeTaken:", timeTaken);
-    console.log("difficulty:", difficulty);
-    console.log("gameType:", gameType);
-    console.log("timings:", timings);
-    console.log("timings[difficulty]:", timings[difficulty]);
+    // console.log("timeTaken:", timeTaken);
+    // console.log("difficulty:", difficulty);
+    // console.log("gameType:", gameType);
+    // console.log("timings:", timings);
+    // console.log("timings[difficulty]:", timings[difficulty]);
     let timeLevels = timings[difficulty][gameType];
-    console.log("timeLevels:", timeLevels);
+    // console.log("timeLevels:", timeLevels);
     let level = "apprentice";
     if (timeTaken < timeLevels[0]) {
       level = "genius";
@@ -202,6 +207,9 @@ const GameGrid = () => {
             ))}
             <ListItem key="apprentice">{times[2] + "s+"}: apprentice</ListItem>
           </List>
+          <Box mt={4}>
+            <BasicButton onClick={chooseGame} text="home" />
+          </Box>
         </Box>
       </Modal>
     </>

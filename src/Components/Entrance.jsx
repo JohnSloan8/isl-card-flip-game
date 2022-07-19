@@ -51,30 +51,33 @@ export default function Entrance() {
   return (
     <Container align="center" maxWidth="xs" sx={{ padding: "0" }}>
       <Box mt={4}>
-        <Typography variant="p">
-          Welcome to the world of <strong>Irish Sign Language</strong>!
+        <Typography variant="body1">
+          Welcome to <strong>Irish Sign Language (ISL)</strong>!
         </Typography>
       </Box>
-      <Box mt={4}>
-        <Typography variant="p">
-          In this game, you will match ISL hand signs and letters to free a
-          genie
+      <Box mt={1}>
+        <Typography variant="body1">
+          On this site, you can discover the world of ISL, and play a
+          fingerspelling memory game!
         </Typography>
       </Box>
-      <Box mt={2}>
+      <Box mt={1}>
         <img width="67%" src={exampleVideo1} />
       </Box>
-      <Box mt={2}>
-        <Typography variant="p">
+      <Box mt={1}>
+        <Typography variant="body1">
+          In the game, you will match ISL hand signs and letters to free a
+          genie.
+        </Typography>
+      </Box>
+      <Box mt={1}>
+        <img src={exampleVideo2} ref={genieRef} width="50%" />
+      </Box>
+      <Box mt={1}>
+        <Typography variant="body1">
           The faster you are, the stronger the genie becomes!
         </Typography>
       </Box>
-      <Box mt={2}>
-        <img src={exampleVideo2} ref={genieRef} width="50%" />
-        {/* <img width="50%%" src={exampleVideo2} /> */}
-      </Box>
-
-      {/* <BasicButton onClick={goToDashboard} text="Next" /> */}
       <Box
         sx={{
           position: "fixed",
