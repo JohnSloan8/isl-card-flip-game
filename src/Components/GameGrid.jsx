@@ -26,7 +26,7 @@ const GameGrid = () => {
   const lampRef = useRef();
   const genieRef = useRef();
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
@@ -134,6 +134,7 @@ const GameGrid = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "80%",
+    maxWidth: "400px",
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
