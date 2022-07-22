@@ -72,7 +72,7 @@ export default function Entrance() {
       <Box mt={1}>
         <img src={exampleVideo2} ref={genieRef} width="50%" />
       </Box>
-      <Box mt={1}>
+      <Box mt={0}>
         <Typography variant="body1">
           The faster you are, the stronger the genie becomes!
         </Typography>
