@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
-import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import HomeIcon from "@mui/icons-material/Home";
 import ArticleIcon from "@mui/icons-material/Article";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
@@ -18,6 +18,9 @@ export default function MainTitle() {
   };
   const redirectInfo = () => {
     navigate("/");
+  };
+  const redirectMainSite = () => {
+    window.location.href = "https://clcs-main-website.netlify.app/";
   };
 
   return (
@@ -53,12 +56,12 @@ export default function MainTitle() {
             color="primary.main"
             fontFamily="Aladin"
             mt={1}
-            onClick={redirectHome}
+            onClick={redirectMainSite}
           >
             Aladdin
           </Typography>
           <Typography
-            variant="p"
+            variant="h6"
             component="div"
             align="center"
             color="primary.main"
@@ -79,7 +82,7 @@ export default function MainTitle() {
             justifyContent: "center",
           }}
         >
-          <QuestionMarkIcon
+          <HomeIcon
             sx={{
               color: "primary.main",
             }}

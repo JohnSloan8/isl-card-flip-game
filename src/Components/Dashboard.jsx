@@ -96,7 +96,7 @@ export default function Dashboard() {
         <Typography variant="h6">Irish Sign Languge (ISL)</Typography>
         <Typography variant="body1">- fingerspelling game -</Typography>
       </Box>
-      <FormControl>
+      <FormControl sx={{ pt: 4 }}>
         <FormLabel>
           <Typography variant="body1">Difficulty</Typography>
         </FormLabel>

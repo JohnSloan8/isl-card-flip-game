@@ -6,13 +6,14 @@ import Intro1 from "./Components/Intro1";
 import Intro2 from "./Components/Intro2";
 import Intro3 from "./Components/Intro3";
 import GameGrid from "./Components/GameGrid";
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import aladdinTheme from "./mui-theme";
 import { createContext, useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import Footer from "./Components/Footer";
 export const CardGameContext = createContext();
 
 const App = () => {
@@ -80,20 +81,23 @@ const App = () => {
     >
       <ThemeProvider theme={aladdinTheme}>
         <div className="App">
-          <Container maxWidth="xs">
-            <MainTitle sx={{ zIndex: 100 }} />
-          </Container>
-          <Container maxWidth="md">
-            <Routes>
-              <Route path="/" element={<Entrance />} />} />
-              <Route path="/intro1" element={<Intro1 />} />
-              <Route path="/intro2" element={<Intro2 />} />
-              <Route path="/intro3" element={<Intro3 />} />
-              <Route path="cardgame" element={<GameGrid />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<p>nothing here</p>} />
-            </Routes>
-          </Container>
+          <Box>
+            <Container maxWidth="xs">
+              <MainTitle sx={{ zIndex: 100 }} />
+            </Container>
+            <Container maxWidth="md">
+              <Routes>
+                <Route path="/" element={<Entrance />} />} />
+                <Route path="/intro1" element={<Intro1 />} />
+                <Route path="/intro2" element={<Intro2 />} />
+                <Route path="/intro3" element={<Intro3 />} />
+                <Route path="cardgame" element={<GameGrid />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="*" element={<p>nothing here</p>} />
+              </Routes>
+            </Container>
+            {/* <Footer /> */}
+          </Box>
         </div>
       </ThemeProvider>
     </CardGameContext.Provider>

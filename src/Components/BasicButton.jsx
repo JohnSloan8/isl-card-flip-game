@@ -5,7 +5,7 @@ const BasicButton = (props) => {
   return (
     <Box
       sx={{
-        position: "fixed",
+        position: "absolute",
         bottom: 0,
         left: 0,
         marginBottom: "10px",
