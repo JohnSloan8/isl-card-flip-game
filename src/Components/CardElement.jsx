@@ -91,7 +91,7 @@ const CardElement = (props) => {
       <Card
         className={`card-dimensions ${
           letterDict[props.letter]["active"] ? "raised" : "flat"
-        } ${imageType === "photo" ? "dark-card-letter" : "light-card-letter"}`}
+        } light-card-letter`}
         sx={{ height: "100" }}
         elevation={letterDict[props.letter]["active"] ? 24 : 1}
         onClick={
@@ -99,10 +99,10 @@ const CardElement = (props) => {
         }
       >
         <CardActionArea style={{ height: "100" }}>
-          <img
+          {/* <img
             src="/assets/images/card-front.png"
             className="card-dimensions front-image easy-image"
-          />
+          /> */}
           {props.letter.length === 1 ? (
             <CardMedia component="img" image={imageURL} alt="a" />
           ) : (

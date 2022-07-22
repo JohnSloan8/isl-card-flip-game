@@ -100,10 +100,10 @@ const CardElementFlip = (props) => {
                 : "light-card-letter"
             }`}
           >
-            <img
+            {/* <img
               src="/assets/images/card-front.png"
               className="card-dimensions front-image"
-            />
+            /> */}
             {props.letter.length === 1 ? (
               <img src={imageURL} className="card-dimensions" alt="non here" />
             ) : (
