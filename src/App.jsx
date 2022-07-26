@@ -96,7 +96,7 @@ const App = () => {
                 <Route path="*" element={<p>nothing here</p>} />
               </Routes>
             </Container>
-            {/* <Footer /> */}
+            <Footer />
           </Box>
         </div>
       </ThemeProvider>

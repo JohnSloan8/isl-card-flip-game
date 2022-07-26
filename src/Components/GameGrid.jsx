@@ -209,7 +209,7 @@ const GameGrid = () => {
             <ListItem key="apprentice">{times[2] + "s+"}: apprentice</ListItem>
           </List>
           <Box mt={4}>
-            <BasicButton onClick={chooseGame} text="home" />
+            <BasicButton onClick={chooseGame} text="select game" />
           </Box>
         </Box>
       </Modal>
