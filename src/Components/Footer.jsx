@@ -7,6 +7,7 @@ import heaLogo from "/assets/images/HEA-logo1.jpg";
 import rialtasLogo from "/assets/images/Rialtas_MARK_MASTER_Std_Colour.png";
 import genieImage from "/assets/images/genie-centered.png";
 import tcdLogo from "/assets/images/tcdLogo.png";
+import { Typography } from "@mui/material";
 
 function Footer() {
   return (
@@ -45,6 +46,25 @@ function Footer() {
             </Grid>
           </Grid>
         </Grid>
+        <Typography
+          variant="body2"
+          sx={{
+            position: "absolute",
+            bottom: "0px",
+            left: "50%",
+            marginLeft: "-133px",
+          }}
+        >
+          Designed by{" "}
+          <span>
+            <a href="https://www.tcd.ie/slscs/staff/carsonle">Lorna Carson</a>
+          </span>{" "}
+          and{" "}
+          <span>
+            <a href="https://johndsloan.me">John Sloan</a>
+          </span>
+        </Typography>
+
         <Box
           sx={{
             float: "right",
