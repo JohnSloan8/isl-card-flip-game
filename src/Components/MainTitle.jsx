@@ -56,7 +56,7 @@ export default function MainTitle() {
             color="primary.main"
             fontFamily="Aladin"
             mt={1}
-            onClick={redirectHome}
+            onClick={redirectHome} // avoid Aladdin
           >
             Aladdin
           </Typography>
